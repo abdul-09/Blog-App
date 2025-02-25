@@ -3,3 +3,10 @@ pillow
 django-cleanup
 django-allauth
 django-htmx
+gunicorn
+python-decouple
+dj-database-url
+gunicorn
+psycopg2-binary
+psycopg
+wagtail
