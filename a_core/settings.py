@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rj#-z^kx3j+1ay397otg6j8m_8#v^$^$jys6&41vy^&6le)ezc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
 
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.redirects',
     'wagtail.contrib.styleguide',
     'wagtail.embeds',
+    # 'wagtail.core',
     'wagtail.sites',
     'wagtail.users',
     'wagtail.snippets',
@@ -82,7 +83,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
-    'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 

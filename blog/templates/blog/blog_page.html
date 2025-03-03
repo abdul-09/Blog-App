@@ -6,7 +6,7 @@
 
 {% block content %} 
 
-    <div class="max-w-[1600px] mx-auto px-8 py-24">
+    <div class="max-w-[1600px] mx-auto px-8 py-6">
         <div class="flex justify-center pb-6">
             <form action="{%  url 'article_search'  %}" method="get" class="relative w-full lg:w-2/3">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" 
@@ -16,7 +16,7 @@
                 <input 
                     type="text" 
                     name="query" 
-                    class="pl-12 pr-4 py-4 w-full m-auto border-gray-300 rounded-full bg-sky-600/50 text-zinc-500 placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-gray-500" 
+                    class="pl-12 pr-4 py-4 w-full m-auto border-gray-300 rounded-full bg-gray-800 text-zinc-500 placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-gray-500" 
                     placeholder="Search articles ..." 
                     {% if search_query %} value="{{ search_query }}"{% endif %}
                 >
@@ -33,7 +33,7 @@
         {% if articles %}
         <div class="grid mt-8 gap-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {% for article in articles %}
-            <article class="relative rounded-2xl border border-gray-500 hover:border-gray-400 bg-sky-600/50 ">  
+            <article class="relative rounded-2xl border border-gray-500 hover:border-gray-400 bg-yellow-100 ">  
                 <a href="{% pageurl article %}" class="flex flex-col justify-between h-full p-4">
                     <div>
                         <h2>{{ article.title }}</h2>

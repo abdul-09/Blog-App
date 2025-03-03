@@ -37,7 +37,12 @@
 
     <div class="mb-8">
         <figure>
+            {% if page.image %}
+            
             {% image page.image original class="w-full" %}
+            <a href=""> Image Url: {{ page.image_url  }}</a>
+            {% else %}
+            {% endif %}
         </figure>
         {% if page.caption %}
         <figcaption class="text-sm text-neutral-500 text-center mt-2 mb-4">
