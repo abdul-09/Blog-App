@@ -51,7 +51,7 @@ class ArticlePage(Page):
     views = models.PositiveIntegerField(default=0, editable=False)
 
     def image_url(self):
-        return self.image.get_rendition('fill-1200x675|jpegquality-80').url
+        return f"{self.image.url}?c=fill,w=1200,h=675,q=80"
     
     def get_context(self, request):
         context = super().get_context(request)

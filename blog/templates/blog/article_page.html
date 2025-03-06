@@ -39,7 +39,7 @@
         <figure>
             {% if page.image %}
             
-            <img src="{{  page.image.url  }}" alt="{{  page.intro }}"><
+            <img src="{{ page.image.url }}?c=fill,w=1200,h=675,q=80" alt="{{ page.caption }}" class="w-full rounded-lg">
             {% else %}
             {% endif %}
         </figure>
