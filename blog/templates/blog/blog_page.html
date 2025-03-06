@@ -52,7 +52,9 @@
                         </p>
                         </div>
                         <figure class="mb-4">
-                            {% image article.specific.image fill-314x166 class="w-full rounded-lg" %}
+                            
+                                <img src="{{ article.specific.image.url }}" alt="{{ article.title }}" class="w-full rounded-lg">
+                            
                         </figure>
                         <span class="hover:underline">Read more</span>
                     </div>
