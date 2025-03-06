@@ -8,8 +8,29 @@ from taggit.models import TaggedItemBase
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from datetime import date
+# models.py
 
-# Create your models here.
+from wagtail.images.models import AbstractImage, AbstractRendition
+from cloudinary_storage.storage import MediaCloudinaryStorage
+
+class CustomImage(AbstractImage):
+    # Override the file field to use Cloudinary storage
+    file = models.ImageField(
+        upload_to='images',
+        storage=MediaCloudinaryStorage(),
+        width_field='width',
+        height_field='height'
+    )
+
+    class Meta:
+        verbose_name = 'Custom Image'
+        verbose_name_plural = 'Custom Images'
+
+class CustomRendition(AbstractRendition):
+    image = models.ForeignKey(CustomImage, on_delete=models.CASCADE, related_name='renditions')
+
+    class Meta:
+        unique_together = (('image', 'filter_spec', 'focal_point_key'),)
 
 class BlogPage(Page):
     body = RichTextField(blank=True)
@@ -36,7 +57,7 @@ class ArticlePage(Page):
     body = RichTextField(blank=True)
     date = models.DateField("Post date", default=date.today)
     image = models.ForeignKey(
-        'wagtailimages.Image', on_delete=models.SET_NULL, null=True, related_name='+'
+        'blog.CustomImage', on_delete=models.SET_NULL, null=True, related_name='+'
     )
 
     caption = models.CharField(blank=True, max_length=100)

@@ -191,7 +191,7 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': config('CLOUDINARY_API_SECRET'),
 }
 
-
+WAGTAILIMAGES_IMAGE_MODEL = 'blog.CustomImage'
 # MEDIA_ROOT = BASE_DIR / 'media' 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
