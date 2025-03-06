@@ -14,13 +14,22 @@ from wagtail.images.models import AbstractImage, AbstractRendition
 from cloudinary_storage.storage import MediaCloudinaryStorage
 
 class CustomImage(AbstractImage):
-    # Override the file field to use Cloudinary storage
     file = models.ImageField(
         upload_to='images',
         storage=MediaCloudinaryStorage(),
         width_field='width',
         height_field='height'
     )
+    description = models.TextField(blank=True)  # Custom field
+
+    admin_form_fields = (
+        'title',
+        'file',
+        'description',  # Include the custom field
+        'collection',
+        'tags',
+    )
+
 
     class Meta:
         verbose_name = 'Custom Image'
