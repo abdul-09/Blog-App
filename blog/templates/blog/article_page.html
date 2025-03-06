@@ -39,8 +39,9 @@
         <figure>
             {% if page.image %}
             
-            {% image page.image original class="w-full" %}
+            <img src="{{ page.image.url }}" alt="{{ page.caption }}" class="w-full" />
             {% else %}
+            <p>No image available</p>
             {% endif %}
         </figure>
         {% if page.caption %}

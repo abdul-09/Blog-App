@@ -69,6 +69,8 @@ INSTALLED_APPS = [
     'wagtail',
     'modelcluster',
     'taggit',
+    'cloudinary',
+    'cloudinary_storage',
 
     # My apps
     'a_home',
@@ -76,7 +78,6 @@ INSTALLED_APPS = [
     'blog',
 ]
 
-INSTALLED_APPS += ['cloudinary', 'cloudinary_storage']
 
 SITE_ID = 1
 
@@ -179,6 +180,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
+MEDIA_URL = 'media/'
 
 # Cloudinary Storage Settings
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -189,9 +191,8 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': config('CLOUDINARY_API_SECRET'),
 }
 
-MEDIA_URL = 'media/'
 
-MEDIA_ROOT = BASE_DIR / 'media' 
+# MEDIA_ROOT = BASE_DIR / 'media' 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
