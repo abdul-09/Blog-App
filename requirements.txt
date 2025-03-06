@@ -11,3 +11,6 @@ psycopg2-binary
 psycopg
 wagtail
 whitenoise
+cloudinary
+django-storages
+django-cloudinary-storage
