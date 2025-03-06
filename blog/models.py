@@ -7,39 +7,14 @@ from wagtail.admin.panels import FieldPanel
 from taggit.models import TaggedItemBase
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from cloudinary.models import CloudinaryField
 from datetime import date
 # models.py
 
 from wagtail.images.models import AbstractImage, AbstractRendition
 from cloudinary_storage.storage import MediaCloudinaryStorage
 
-class CustomImage(AbstractImage):
-    file = models.ImageField(
-        upload_to='images',
-        storage=MediaCloudinaryStorage(),
-        width_field='width',
-        height_field='height'
-    )
-    description = models.TextField(blank=True)  # Custom field
 
-    admin_form_fields = (
-        'title',
-        'file',
-        'description',  # Include the custom field
-        'collection',
-        'tags',
-    )
-
-
-    class Meta:
-        verbose_name = 'Custom Image'
-        verbose_name_plural = 'Custom Images'
-
-class CustomRendition(AbstractRendition):
-    image = models.ForeignKey(CustomImage, on_delete=models.CASCADE, related_name='renditions')
-
-    class Meta:
-        unique_together = (('image', 'filter_spec', 'focal_point_key'),)
 
 class BlogPage(Page):
     body = RichTextField(blank=True)
@@ -65,8 +40,8 @@ class ArticlePage(Page):
     intro = models.CharField(max_length=100)
     body = RichTextField(blank=True)
     date = models.DateField("Post date", default=date.today)
-    image = models.ForeignKey(
-        'blog.CustomImage', on_delete=models.SET_NULL, null=True, related_name='+'
+    image = CloudinaryField(
+        'image', null=True, blank=True,
     )
 
     caption = models.CharField(blank=True, max_length=100)
